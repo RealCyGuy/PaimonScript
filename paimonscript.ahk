@@ -5,6 +5,11 @@ if (A_IsAdmin != true) {
 }
 
 SetWorkingDir % A_ScriptDir
+IniRead, Enabled, config.ini, PaimonScript, enabled
+if (not enabled == "true") {
+    ExitApp
+}
+IniRead, Exe, config.ini, PaimonScript, genshinExe
 IniRead, InteractEnabled, config.ini, QuickInteract, enabled
 IniRead, InteractTriggerKey, config.ini, QuickInteract, triggerKey
 IniRead, InteractTriggeredKey, config.ini, QuickInteract, triggeredKey
@@ -21,16 +26,20 @@ global CookStop := Format("{:d}", CookStop)
 IniRead, CookAdeptusTemptation, config.ini, AutoCook, adeptusTemptation
 
 if (InteractEnabled == "true") {
+    #If WinActive("ahk_exe" Exe)
     Hotkey, $%InteractTriggerKey%, QuickInteract
 }
 if (AARREnabled == "true") {
+    #If WinActive("ahk_exe" Exe)
     Hotkey, $LButton, AARR
 }
 if (BunnyEnabled == "true") {
+    #If WinActive("ahk_exe" Exe)
     Hotkey, $%BunnyKey%, BunnyHop
 }
 if (CookEnabled == "true") {
     if (CookAdeptusTemptation) {
+        #If WinActive("ahk_exe" Exe)
         Hotkey, $%CookAdeptusTemptation%, AdeptusTemptation
     }
 }
