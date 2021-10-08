@@ -1,14 +1,16 @@
 ; PaimonScript by Cyrus Yip
-if (A_IsAdmin != true) {
-    Run *RunAs "%A_ScriptFullPath%"
-    ExitApp
-}
 
 SetWorkingDir % A_ScriptDir
 IniRead, Enabled, config.ini, PaimonScript, enabled
 if (not enabled == "true") {
     ExitApp
 }
+
+if (A_IsAdmin != true) {
+    Run *RunAs "%A_ScriptFullPath%"
+    ExitApp
+}
+
 IniRead, Exe, config.ini, PaimonScript, genshinExe
 IniRead, InteractEnabled, config.ini, QuickInteract, enabled
 IniRead, InteractTriggerKey, config.ini, QuickInteract, triggerKey
