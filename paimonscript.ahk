@@ -10,6 +10,7 @@ IniRead, InteractTriggerKey, config.ini, QuickInteract, triggerKey
 IniRead, InteractTriggeredKey, config.ini, QuickInteract, triggeredKey
 IniRead, AARREnabled, config.ini, AARR, enabled
 IniRead, BunnyEnabled, config.ini, BunnyHop, enabled
+IniRead, BunnyKey, config.ini, BunnyHop, key
 IniRead, CookEnabled, config.ini, AutoCook, enabled
 IniRead, CookX, config.ini, AutoCook, buttonX
 IniRead, CookStart, config.ini, AutoCook, startY
@@ -26,7 +27,7 @@ if (AARREnabled == "true") {
     Hotkey, $LButton, AARR
 }
 if (BunnyEnabled == "true") {
-    Hotkey, ^i, BunnyHop
+    Hotkey, $%BunnyKey%, BunnyHop
 }
 if (CookEnabled == "true") {
     if (CookAdeptusTemptation) {
@@ -93,7 +94,7 @@ BunnyHop:
     Sleep, 50
     Send, {w Down}
     Sleep, 350
-    While GetKeyState("Ctrl", "P") and GetKeyState("i", "P") {
+    While GetKeyState(%BunnyKey%, "P") {
         Send, {Space}
         Sleep, 100
     }
