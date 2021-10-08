@@ -17,6 +17,10 @@ Your Genshin Impact companion script!
 - Cook food with the click of a button
 - More in the future?
 
+## Contributing
+
+Pull requests are welcome, request a pull and I might pull your request!
+
 ## License
 
 [MIT](https://github.com/RealCyGuy/PaimonScript/blob/main/LICENSE.md)
