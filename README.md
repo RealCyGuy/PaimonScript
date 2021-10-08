@@ -4,9 +4,9 @@ Your Genshin Impact companion script!
 
 ## Installation
 
-- Install [AutoHotKey](https://www.autohotkey.com/)
-- Download this repo
-- Run `paimonscript.ahk`
+- Install [AutoHotKey](https://www.autohotkey.com/).
+- Download this repo.
+- Run `paimonscript.ahk`.
 - You can edit `config.ini` to your liking.
 
 ## Features
