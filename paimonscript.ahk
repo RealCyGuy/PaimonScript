@@ -103,7 +103,7 @@ BunnyHop:
     Sleep, 50
     Send, {w Down}
     Sleep, 350
-    While GetKeyState(%BunnyKey%, "P") {
+    While GetKeyState(BunnyKey, "P") {
         Send, {Space}
         Sleep, 100
     }
