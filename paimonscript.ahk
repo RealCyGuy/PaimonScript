@@ -1,8 +1,15 @@
 ; PaimonScript by Cyrus Yip
 
 SetWorkingDir % A_ScriptDir
-IniRead, Enabled, config.ini, PaimonScript, enabled
+if (FileExist("local.ini")) {
+    config = "local.ini"
+}
+Else {
+    config = "config.ini"
+}
+IniRead, Enabled, %config%, PaimonScript, enabled
 if (not enabled == "true") {
+    MsgBox, PaimonScript is not enabled`, check config.ini or local.ini
     ExitApp
 }
 
@@ -11,24 +18,24 @@ if (A_IsAdmin != true) {
     ExitApp
 }
 
-IniRead, Exe, config.ini, PaimonScript, genshinExe
-IniRead, InteractEnabled, config.ini, QuickInteract, enabled
-IniRead, InteractTriggerKey, config.ini, QuickInteract, triggerKey
-IniRead, InteractTriggeredKey, config.ini, QuickInteract, triggeredKey
-IniRead, AARREnabled, config.ini, AARR, enabled
-IniRead, BunnyEnabled, config.ini, BunnyHop, enabled
-IniRead, BunnyKey, config.ini, BunnyHop, key
-IniRead, CookEnabled, config.ini, AutoCook, enabled
-IniRead, CookAutoConfirm, config.ini, AutoCook, autoConfirm
-IniRead, CookX, config.ini, AutoCook, buttonX
-IniRead, CookStart, config.ini, AutoCook, startY
-IniRead, CookStop, config.ini, AutoCook, stopY
+IniRead, Exe, %config%, PaimonScript, genshinExe
+IniRead, InteractEnabled, %config%, QuickInteract, enabled
+IniRead, InteractTriggerKey, %config%, QuickInteract, triggerKey
+IniRead, InteractTriggeredKey, %config%, QuickInteract, triggeredKey
+IniRead, AARREnabled, %config%, AARR, enabled
+IniRead, BunnyEnabled, %config%, BunnyHop, enabled
+IniRead, BunnyKey, %config%, BunnyHop, key
+IniRead, CookEnabled, %config%, AutoCook, enabled
+IniRead, CookAutoConfirm, %config%, AutoCook, autoConfirm
+IniRead, CookX, %config%, AutoCook, buttonX
+IniRead, CookStart, %config%, AutoCook, startY
+IniRead, CookStop, %config%, AutoCook, stopY
 global CookAutoConfirm
 global CookX := Format("{:d}", CookX)
 global CookStart := Format("{:d}", CookStart)
 global CookStop := Format("{:d}", CookStop)
-IniRead, CookAdeptusTemptation, config.ini, AutoCook, adeptusTemptation
-IniRead, CookRicePudding, config.ini, AutoCook, ricePudding
+IniRead, CookAdeptusTemptation, %config%, AutoCook, adeptusTemptation
+IniRead, CookRicePudding, %config%, AutoCook, ricePudding
 
 if (InteractEnabled == "true") {
     #If WinActive("ahk_exe" Exe)

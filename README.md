@@ -21,6 +21,8 @@ Your Genshin Impact companion script!
 
 Pull requests are welcome, request a pull and I might pull your request!
 
+If it exists, `local.ini` will be used as the config file instead of `config.ini`.
+
 ## License
 
 [MIT](https://github.com/RealCyGuy/PaimonScript/blob/main/LICENSE.md)
