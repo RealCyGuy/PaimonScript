@@ -28,6 +28,7 @@ global CookX := Format("{:d}", CookX)
 global CookStart := Format("{:d}", CookStart)
 global CookStop := Format("{:d}", CookStop)
 IniRead, CookAdeptusTemptation, config.ini, AutoCook, adeptusTemptation
+IniRead, CookRicePudding, config.ini, AutoCook, ricePudding
 
 if (InteractEnabled == "true") {
     #If WinActive("ahk_exe" Exe)
@@ -45,6 +46,10 @@ if (CookEnabled == "true") {
     if (CookAdeptusTemptation) {
         #If WinActive("ahk_exe" Exe)
         Hotkey, $%CookAdeptusTemptation%, AdeptusTemptation
+    }
+    if (CookRicePudding) {
+        #If WinActive("ahk_exe" Exe)
+        Hotkey, $%CookRicePudding%, RicePudding
     }
 }
 
@@ -126,4 +131,7 @@ Cook(delay) {
 }
 AdeptusTemptation:
     Cook(2200)
+    Return
+RicePudding:
+    Cook(1700)
     Return
