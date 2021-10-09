@@ -2,13 +2,13 @@
 
 SetWorkingDir % A_ScriptDir
 if (FileExist("local.ini")) {
-    config = "local.ini"
+    config := "local.ini"
 }
 Else {
-    config = "config.ini"
+    config := "config.ini"
 }
 IniRead, Enabled, %config%, PaimonScript, enabled
-if (not enabled == "true") {
+if (not Enabled == "true") {
     MsgBox, PaimonScript is not enabled`, check config.ini or local.ini
     ExitApp
 }
