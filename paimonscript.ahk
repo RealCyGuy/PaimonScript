@@ -19,9 +19,11 @@ IniRead, AARREnabled, config.ini, AARR, enabled
 IniRead, BunnyEnabled, config.ini, BunnyHop, enabled
 IniRead, BunnyKey, config.ini, BunnyHop, key
 IniRead, CookEnabled, config.ini, AutoCook, enabled
+IniRead, CookAutoConfirm, config.ini, AutoCook, autoConfirm
 IniRead, CookX, config.ini, AutoCook, buttonX
 IniRead, CookStart, config.ini, AutoCook, startY
 IniRead, CookStop, config.ini, AutoCook, stopY
+global CookAutoConfirm
 global CookX := Format("{:d}", CookX)
 global CookStart := Format("{:d}", CookStart)
 global CookStop := Format("{:d}", CookStop)
@@ -117,6 +119,10 @@ Cook(delay) {
     Click %CookX%, %CookStart%
     Sleep, %delay%
     Click %CookX%, %CookStop%
+    if (CookAutoConfirm == "true") {
+        Sleep, 2000
+        Click %CookX%, %CookStop%
+    }
 }
 AdeptusTemptation:
     Cook(2200)
