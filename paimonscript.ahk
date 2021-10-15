@@ -25,6 +25,7 @@ IniRead, InteractTriggeredKey, %config%, QuickInteract, triggeredKey
 IniRead, AARREnabled, %config%, AARR, enabled
 IniRead, BunnyEnabled, %config%, BunnyHop, enabled
 IniRead, BunnyKey, %config%, BunnyHop, key
+IniRead, BunnyForward, %config%, BunnyHop, autoForward
 IniRead, CookEnabled, %config%, AutoCook, enabled
 IniRead, CookAutoConfirm, %config%, AutoCook, autoConfirm
 IniRead, CookX, %config%, AutoCook, buttonX
@@ -117,13 +118,17 @@ AARR:
 BunnyHop:
     Send, {Click Right}
     Sleep, 50
-    Send, {w Down}
+    if (BunnyForward == "true") {
+        Send, {w Down}
+    }
     Sleep, 350
     While GetKeyState(BunnyKey, "P") {
         Send, {Space}
         Sleep, 100
     }
-    Send, {w Up}
+    if (BunnyForward == "true") {
+        Send, {w Up}
+    }
     Return
 
 ; Auto Food Cooker
